@@ -1,69 +1,248 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CodePen Clone
 
-## Available Scripts
+A simple and interactive CodePen Clone built with React that allows users to write HTML, CSS, and JavaScript code and instantly preview the output in real time. This project was created to practice React concepts, state management, and code editor integration.
 
-In the project directory, you can run:
+---
 
-### ` $env:NODE_OPTIONS="--openssl-legacy-provider"   npm start`
+## 🚀 Features
 
+- Live HTML Editor
+- Live CSS Editor
+- Live JavaScript Editor
+- Real-Time Output Preview
+- Responsive User Interface
+- Separate Editors for HTML, CSS, and JavaScript
+- Instant Code Compilation and Rendering
+- Syntax Highlighting
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## 🛠️ Technologies Used
 
-### `npm test`
+- React.js
+- HTML5
+- CSS3
+- JavaScript (ES6+)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📚 Libraries Used
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### CodeMirror
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```json
+"codemirror": "^5.57.0"
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+CodeMirror is used to provide a professional code editing experience inside the browser. It offers:
 
-### `npm run eject`
+- Syntax Highlighting
+- Line Numbers
+- Code Formatting Support
+- Better Code Readability
+- Improved User Experience
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### React CodeMirror
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```json
+"react-codemirror2": "^7.2.1"
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+React CodeMirror is a React wrapper around CodeMirror. It makes it easy to integrate the CodeMirror editor into React applications and manage editor state using React components.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### React
 
-## Learn More
+```json
+"react": "^16.13.1"
+"react-dom": "^16.13.1"
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+React is used to build the user interface and manage application state efficiently.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## ⚠️ Why Older CodeMirror Libraries Were Used
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Initially, newer CodeMirror versions were tested in this project. However, they introduced several compatibility issues, including:
 
-### Analyzing the Bundle Size
+- Incorrect text rendering inside the editor.
+- Characters appearing in reverse order while typing.
+- Output synchronization issues.
+- Additional integration problems with the project setup.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+For example, typing:
 
-### Making a Progressive Web App
+```text
+hello
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+sometimes produced unexpected editor behavior and rendering issues.
 
-### Advanced Configuration
+To ensure stability and compatibility, the project uses the older and well-supported versions:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+```json
+"codemirror": "^5.57.0"
+"react-codemirror2": "^7.2.1"
+```
 
-### Deployment
+These versions provided a more reliable development experience and worked correctly with the project's React version.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+---
 
-### `npm run build` fails to minify
+## 📦 Installation
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Clone the repository:
+
+```bash
+git https://github.com/abrar0349/code-pen-clone.git
+```
+
+Navigate to the project folder:
+
+```bash
+cd codepen-clone
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+---
+
+## ▶️ Running the Project
+
+The project uses the following start script:
+
+```json
+"start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start"
+```
+
+Run the project using:
+
+```bash
+npm start
+```
+
+---
+
+## 🔧 Why Is `--openssl-legacy-provider` Used?
+
+Modern versions of Node.js use OpenSSL 3 by default. Older React projects created with Create React App and some older dependencies may not be fully compatible with OpenSSL 3.
+
+Without this configuration, the application may fail to start and display errors similar to:
+
+```bash
+error:0308010C:digital envelope routines::unsupported
+```
+
+To solve this issue, the following flag is used:
+
+```bash
+--openssl-legacy-provider
+```
+
+### What Does It Do?
+
+```bash
+set NODE_OPTIONS=--openssl-legacy-provider
+```
+
+This command:
+
+- Enables legacy OpenSSL support.
+- Allows older React dependencies to work with newer Node.js versions.
+- Prevents OpenSSL compatibility errors.
+- Ensures the development server starts successfully.
+
+The second part:
+
+```bash
+react-scripts start
+```
+
+starts the React development server and runs the application locally.
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+│
+├── components/
+│   ├── Editor.js
+│   ├── Preview.js
+│   └── ...
+│
+├── App.js
+├── App.css
+└── index.js
+```
+
+---
+
+## 🎯 Learning Objectives
+
+This project helped in understanding:
+
+- React Components
+- React Hooks
+- State Management
+- Props
+- Third-Party Library Integration
+- Live Code Rendering
+- CodeMirror Integration
+- Real-Time UI Updates
+
+---
+
+## 📸 Preview
+
+The application provides three separate editors:
+
+- HTML Editor
+- CSS Editor
+- JavaScript Editor
+
+The output panel updates automatically whenever code changes are made.
+
+---
+
+## 🤝 Future Improvements
+
+- Dark/Light Theme Toggle
+- Save Code Functionality
+- Download Project Files
+- User Authentication
+- Multiple Templates
+- Auto-Save Feature
+- Code Formatting Support
+
+---
+
+## 👨‍💻 Author
+
+**Abrar Khan**
+
+Frontend Developer passionate about React.js and modern web development.
+
+### Skills
+
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- Bootstrap
+- Tailwind CSS
+- React.js
+- Redux
+- Next.js
+- Express.js
+- MongoDB
+
+---
+
+## 📄 License
+
+This project is created for learning and educational purposes.
